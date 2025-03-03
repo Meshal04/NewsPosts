@@ -25,4 +25,3 @@ require __DIR__.'/auth.php';
 
 Route::resource('comments', CommentController::class)->middleware('auth');
 
-jjjjj
