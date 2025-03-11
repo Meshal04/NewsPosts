@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CategotyController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,4 +26,5 @@ Route::resource('posts', PostController::class);
 require __DIR__.'/auth.php';
 
 Route::resource('comments', CommentController::class)->middleware('auth');
-
+Route::resource('news', NewsController::class);
+Route::resource('categories', CategotyController::class);
