@@ -38,4 +38,5 @@ Route::middleware(['auth', 'role:writer'])->group(function () {
     Route::post('posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('news/create', [NewsController::class, 'create'])->name('news.create');
     Route::post('news', [NewsController::class, 'store'])->name('news.store');
+    
 });
