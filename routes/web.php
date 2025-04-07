@@ -18,22 +18,22 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-//     Route::resource('comments', CommentController::class);
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('comments', CommentController::class);
+});
 
-Route::resource('posts', PostController::class)->only(['index', 'show']);
-Route::resource('news', NewsController::class)->only(['index', 'show']);
-Route::resource('categories', CategoryController::class)->only(['index', 'show']);
+Route::resource('posts', PostController::class);
+Route::resource('news', NewsController::class);
+Route::resource('categories', CategoryController::class);
 
-// Route::middleware(['auth', 'role:admin'])->group(function () {
-//     Route::resource('posts', PostController::class)->except(['index', 'show']);
-//     Route::resource('news', NewsController::class)->except(['index', 'show']);
-//     Route::resource('categories', CategoryController::class)->except(['index', 'show']);
-// });
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('posts', PostController::class)->except(['index', 'show']);
+    Route::resource('news', NewsController::class)->except(['index', 'show']);
+    Route::resource('categories', CategoryController::class)->except(['index', 'show']);
+});
 
 // Route::middleware(['auth', 'role:writer'])->group(function () {
 //     Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');

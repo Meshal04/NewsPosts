@@ -18,13 +18,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['admin', 'writer', 'user'])->default('user');
+            // $table->enum('role', ['admin', 'writer', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('user'); // Possible values: admin, writer, user
-        });
+      
         
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
